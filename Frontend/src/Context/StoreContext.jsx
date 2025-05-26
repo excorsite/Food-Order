@@ -4,18 +4,18 @@ import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const [cartItems, setCartItem] = useState({});
+  const [cartItems, setCartItems] = useState({});
 
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
-      setCartItem((prev) => ({ ...prev, [itemId]: 1 }));
+      setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
     } else {
-      setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     }
   };
 
   const removeFromCart = (itemId) => {
-    setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const StoreContextProvider = (props) => {
   const contextValue = {
     food_list,
     cartItems,
-    setCartItem,
+    setCartItems,
     addToCart,
     removeFromCart,
   };
