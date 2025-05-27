@@ -3,11 +3,11 @@ import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 
 const LoginPopup = ({ setShowLogin }) => {
-  const [currentState, setCurrentState] = useState("Sign Up");
+  const [currentState, setCurrentState] = useState("Login");
 
   return (
     <div className="login-popup">
-      <form className="login-popup-conatiner">
+      <form className="login-popup-container">
         <div className="login-popup-title">
           <h2>{currentState}</h2>
           <img
