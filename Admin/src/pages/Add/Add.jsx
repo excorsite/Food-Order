@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Add = () => {
-  const url = "http://loaclhost:4000";
+  const url = "http://localhost:4000";
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -71,6 +71,7 @@ const Add = () => {
             type="text"
             name="name"
             placeholder="Type here"
+            required
           />
         </div>
         <div className="add-product-description flex-col">
@@ -81,12 +82,18 @@ const Add = () => {
             name="description"
             rows="6"
             placeholder="Write content here"
+            required
           ></textarea>
         </div>
         <div className="add-category-price">
           <div className="add-category flex-col">
             <p>Product Category</p>
-            <select name="category">
+            <select
+              name="category"
+              onChange={onChangeHandler}
+              value={data.category}
+              required
+            >
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Deserts">Deserts</option>
@@ -97,14 +104,16 @@ const Add = () => {
               <option value="Noodles">Noodles</option>
             </select>
           </div>
-          <div className="add-price flex--col">
+          <div className="add-price flex-col">
             <p>Product Price</p>
             <input
               onChange={onChangeHandler}
               value={data.price}
-              type="Number"
+              type="number"
               name="price"
               placeholder="Rs 100"
+              required
+              min="0" // optional: ensure price is not negative
             />
           </div>
         </div>
